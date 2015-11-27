@@ -3,12 +3,11 @@ FROM node:0.12
 # ------------------------------------------------------------------------------
 # Install base
 RUN apt-get update
-RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs 
+RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs gyp
 
 # Install Cloud9 IDE
 RUN git clone git://github.com/c9/core.git /cloud9
 WORKDIR /cloud9
-RUN wget https://raw.githubusercontent.com/c9/install/master/install.sh && sed -i -e 's_install pty.js_install --unsafe-perm pty.js_g' install.sh  && bash install.sh && rm -rf install.sh
 RUN scripts/install-sdk.sh
 
 RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js 
