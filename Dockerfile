@@ -27,4 +27,4 @@ EXPOSE 3000
 
 
 # Start container services
-CMD /usr/local/bin/node /cloud9/server.js --port 80 -w /workspace --packed --listen 0.0.0.0
+CMD /usr/local/bin/node /cloud9/server.js --port 80 -w /workspace --packed --listen 0.0.0.0 -a :
